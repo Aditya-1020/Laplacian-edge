@@ -4,15 +4,26 @@ Implementation of Laplacian filter to detect edges in a grayscale image.
 - using second order derivative filter
 
 ## Steps:
-1. Load an Image: Use a library like stb_image.h (or raw PGM format if you want to avoid external libraries).
-2. Convert to Grayscale (if needed): If the image is RGB, average the R, G, and B values.
-3. Apply a 3x3 Laplacian Kernel: Convolve the image with the Laplacian filter:
-    - \begin{bmatrix} 0 &amp; 1 &amp; 0 \\ 1 &amp; -4 &amp; 1 \\ 0 &amp; 1 &amp; 0 \end{bmatrix}
-    or \begin{bmatrix} 1 &amp; 1 &amp; 1 \\ 1 &amp; -8 &amp; 1 \\ 1 &amp; 1 &amp; 1 \end{bmatrix}
-4. Handle Boundary Pixels: Use zero-padding, mirroring, or ignore them.
-5. Normalize and Threshold: Normalize output values to 0–255 and apply a threshold for better visibility.
-6. Save the Processed Image: Save the output as a PGM file (or PNG if using a library).
+1. Setup & Image Handling
+- Load a grayscale image (PGM is easiest, or use stb_image for PNG/JPG).
+- Store pixel data in a 2D array.
 
+2. Define the Laplacian Kernel
+- Choose between the 4-neighbor (-4 center) kernel or the 8-neighbor (-8 center) kernel.
+- Store the kernel in a 3x3 array.
+
+3. Implement Convolution
+- Iterate over each pixel (excluding boundaries).
+- Apply the kernel multiplication and summation.
+- Store the result in a new image buffer.
+
+4. Normalize and Threshold
+- Find the min/max values in the output image.
+- Normalize pixel values to 0–255.
+- Apply a threshold to enhance edges.
+
+5. Save the Processed Image
+Write the new image to a PGM file for viewing.
 
 
 ### Stretch Goals:
