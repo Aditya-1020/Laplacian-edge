@@ -30,3 +30,17 @@ Write the new image to a PGM file for viewing.
 - Apply the Laplacian transform in frequency domain using the Fourier Transform (optional but interesting).
 - Implement real-time video processing if you have OpenCV or SDL2.
 - Compare against the Sobel filter, which detects directional edges
+
+
+--- 
+## Notes
+
+VLA (Variable Length Arrays)
+- array whose size is determined at runtime rather than compile time.
+- useful when dimensions are not fixed
+
+
+why not use a normal array ?
+- normal array's allocate memory on the stack, is limited in size not enough for large images.
+- Require width and height to be known at compile time.
+
