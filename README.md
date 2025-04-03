@@ -5,42 +5,40 @@ Implementation of Laplacian filter to detect edges in a grayscale image.
 
 ## Steps:
 1. Setup & Image Handling
-- Load a grayscale image (PGM is easiest, or use stb_image for PNG/JPG).
-- Store pixel data in a 2D array.
+- Load a grayscale image (PGM recommended, or use stb_image for PNG/JPG).
+- Store pixel data in a 2D array for processing.
 
-2. Define the Laplacian Kernel
-- Choose between the 4-neighbor (-4 center) kernel or the 8-neighbor (-8 center) kernel.
-- Store the kernel in a 3x3 array.
+2. Apply Gaussian Smoothing
+- Use a 3x3 or 5x5 Gaussian kernel (e.g., with standard deviation  or σ = 1.0 or 1.4).
+- Convolve the image with the Gaussian kernel to reduce noise before edge detection.
 
-3. Implement Convolution
-- Iterate over each pixel (excluding boundaries).
-- Apply the kernel multiplication and summation.
+3. Define and Apply the Laplacian Kernel
+- Choose between:
+    - 4-neighbor Laplacian:
+        0  1  0  
+        1 -4  1  
+        0  1  0  
+    - 8-neighbor Laplacian:
+        1  1  1  
+        1 -8  1  
+        1  1  1  
+- Convolve the smoothed image with the chosen Laplacian kernel.
+
+4. Implement Convolution
+- Iterate over each pixel (excluding the boundary pixels).
+- Multiply the surrounding pixels by the kernel values and sum them.
 - Store the result in a new image buffer.
 
-4. Normalize and Threshold
-- Find the min/max values in the output image.
-- Normalize pixel values to 0–255.
-- Apply a threshold to enhance edges.
+5. Normalize and Threshold
+- Find the minimum and maximum pixel values in the output image.
+- Normalize the pixel values to a 0–255 range.
+- Apply an optional threshold to enhance edges further.
 
-5. Save the Processed Image
-Write the new image to a PGM file for viewing.
+6. Save the Processed Image
+- Write the processed image to a PGM file (or another format) for visualization.
 
 
 ### Stretch Goals:
 - Apply the Laplacian transform in frequency domain using the Fourier Transform (optional but interesting).
 - Implement real-time video processing if you have OpenCV or SDL2.
 - Compare against the Sobel filter, which detects directional edges
-
-
---- 
-## Notes
-
-VLA (Variable Length Arrays)
-- array whose size is determined at runtime rather than compile time.
-- useful when dimensions are not fixed
-
-
-why not use a normal array ?
-- normal array's allocate memory on the stack, is limited in size not enough for large images.
-- Require width and height to be known at compile time.
-

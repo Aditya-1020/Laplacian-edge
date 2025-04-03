@@ -26,8 +26,17 @@ int main(void) {
         }
     }
 
-    // 
+    // Gaussian blur
+    int sigma = 1; // standard deviation
+    float gaussian_kernel[3][3] = {
+        {1.0 / 16, 2.0 / 16, 1.0 / 16}, //      [1,2,1]
+        {2.0 / 16, 4.0 / 16, 2.0 / 16}, //(1/16)[2,4,2]
+        {1.0 / 16, 2.0 / 16, 1.0 / 16} //       [1,2,1]
+    };
     
+
+ // https://chatgpt.com/c/67eeb263-4504-8006-81c7-f07cf44c08d1
+ 
     
     
     free(pixel_data);
