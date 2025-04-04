@@ -1,9 +1,3 @@
-Todu
-- apply gaussian matrix to the image 
-- methods: https://chatgpt.com/share/67eeb2ad-c89c-8006-9e55-44ed3c4e4e84
-
----
-
 ## Notes
 
 VLA (Variable Length Arrays)
