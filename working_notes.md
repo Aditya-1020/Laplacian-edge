@@ -52,3 +52,14 @@ applying it
 - multiply values with corresponding pixel value
 - sum the results and replace the pixel with this weighted sum
 
+Normalizing, Thresholding ?
+laplacian kernel creates any values including negative and images only range (0,225)
+- So image is scanned to determine lowest (min) and highest (max) pixel values.
+
+normalized pixel value formula : \text{normalized} = \frac{(\text{pixel} - \text{min})}{(\text{max} - \text{min})} \times 255
+use this formula to remap each pixel value
+
+Thresholding smooths the image filtering the noise
+- threshold is set (betweeen 0-225)
+    - pixels below this are set 0
+    - pixels above are set 225 or kept as is.. why ?
