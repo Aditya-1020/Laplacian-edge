@@ -23,6 +23,16 @@ Tools Used
 
 
 ## Execution
+
+Clone the repository
+```sh
+git clone https://github.com/<your-username>/Laplacian-edge.git
+```
+navigate to the directory:
+```sh
+cd laplacian-edge
+```
+
 Before execution check which image you would like to use they are stored in images folder replace this line stbi_load("images/your image name here.png", &width, &height, &channels, 1); with you image name in the marked spot
 - default image selected is pilot.png
 - If you are using your own image make sure the image is in .png format
