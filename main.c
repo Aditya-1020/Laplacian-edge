@@ -35,8 +35,7 @@ int main(void) {
     };
     
 
- // https://chatgpt.com/c/67eeb263-4504-8006-81c7-f07cf44c08d1
- 
+
     
     
     free(pixel_data);
